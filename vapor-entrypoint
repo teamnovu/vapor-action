@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 set -e
 
@@ -14,6 +14,13 @@ if [ ${GITHUB_SECRET} ]; then
     composer config --global github-oauth.github.com ${GITHUB_SECRET}
 else
     echo "No private repos accessible due to GITHUB_SECRET was not provided"
+    echo "You can generate one by accessing https://github.com/settings/tokens/new?scopes=repo&description=Github%20Action"
+fi
+
+if [ -z ${VAPOR_API_TOKEN} ]; then
+    echo "You need to add a Vaport API Token!"
+    echo "Generate one under https://vapor.laravel.com/app/account/api-tokens"
+    exit 1
 fi
 
 exec vapor "$@"

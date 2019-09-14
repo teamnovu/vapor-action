@@ -9,7 +9,7 @@ jobs:
       - name: Test the Laravel Vapor list command
         uses: ./
         env:
-          VAPOR_API_TOKEN: example vapor token
-          GITHUB_SECRET: example github token
+          VAPOR_API_TOKEN: "exampleVaporToken"
+          GITHUB_SECRET: "exampleGithubToken"
         with:
           args: list

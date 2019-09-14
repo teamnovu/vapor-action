@@ -31,7 +31,9 @@ Generate a Github Token under https://github.com/settings/tokens/new?scopes=repo
 
 ### Example Github Action
 
-You can add a new workflow under `.github/workflows` (e.g. `push.yaml`) to your repository to enable this Action.
+Add a new workflow under `.github/workflows` (e.g. `push.yaml`) to your repository to enable this Action.
+
+You can find out more about under https://help.github.com/en/articles/workflow-syntax-for-github-actions#jobs
 
 ```
 name: Deploy to staging

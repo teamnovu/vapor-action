@@ -1,0 +1,15 @@
+name: Test the Laravel Vapor Actions
+on: push
+jobs:
+  test-action:
+    name: Test the Laravel Vapor list command
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Test the Laravel Vapor list command
+        uses: ./
+        env:
+          VAPOR_API_TOKEN: example vapor token
+          GITHUB_SECRET: example github token
+        with:
+          args: list

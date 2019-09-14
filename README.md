@@ -9,11 +9,49 @@ GitHub Actions for [Laravel Vapor](https://docs.vapor.build/1.0/introduction.htm
 
 Via GitHub Workflow
 
+### Prepare
+2. Generate a Vapor API Token under https://vapor.laravel.com/app/account/api-tokens
+3. Add both as secret variables to your project under https://github.com/{username}/{project}/settings/secrets
+![](docs/github-secrets.png)
+
+## Private Github Repositories
+
+The `GITHUB_SECRET` variable is used to access any private repos from your github profile.
+
+Generate a Github Token under https://github.com/settings/tokens/new?scopes=repo&description=Github%20Action
+
+**You need to define private repositories in your `composer.json` with the following URL format**
+
+    "repositories": [
+        {
+            "type": "git",
+            "url": "git@github.com:{username}/{project}.git"
+        }
+    ]
+
+### Example Github Action
+
+You can add a new workflow under `.github/workflows` (e.g. `push.yaml`) to your repository to enable this Action.
+
 ```
-action "Composer Install" {
-  uses = "teamnovu/vapor-action@master"
-  args = "deploy staging"
-}
+name: Deploy to staging
+on:
+  push:
+    branches:
+        - develop
+jobs:
+  vapor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Deploy to staging
+        env:
+            VAPOR_API_TOKEN: ${{ secrets.VAPOR_API_TOKEN }}
+            GITHUB_SECRET: ${{ secrets.GITHUB_SECRET }}
+        uses: teamnovu/vapor-action@master
+        with:
+            args: deploy staging
+
 ```
 
 ## Credits

@@ -25,4 +25,4 @@ fi
 
 composer install
 
-exec vapor "$@"
+vapor "$@"

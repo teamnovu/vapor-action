@@ -23,6 +23,4 @@ if [ -z ${VAPOR_API_TOKEN} ]; then
     exit 1
 fi
 
-composer install
-
 vapor "$@"

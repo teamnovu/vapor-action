@@ -18,7 +18,7 @@ else
 fi
 
 if [ -z ${VAPOR_API_TOKEN} ]; then
-    echo "You need to add a Vaport API Token!"
+    echo "You need to add a Vapor API Token!"
     echo "Generate one under https://vapor.laravel.com/app/account/api-tokens"
     exit 1
 fi

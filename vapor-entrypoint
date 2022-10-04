@@ -23,4 +23,8 @@ if [ -z ${VAPOR_API_TOKEN} ]; then
     exit 1
 fi
 
+if ! [ -z "${INPUT_WORKING_DIRECTORY}" ]; then
+    cd ${GITHUB_WORKSPACE}/${INPUT_WORKING_DIRECTORY}
+fi
+
 vapor "$@"
